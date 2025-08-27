@@ -11,6 +11,7 @@
     <div id="lista">
         <input type="text" v-model="itemAdd" v-on:change="addItem"/>
          <button v-on:click="addItem">Add</button> <!-- Pode ser v-on:click ou @click -->
+        <button v-on:click="removeItem">Apagar</button>
 
         <ul>
             <li v-for="item in lista">
@@ -30,10 +31,18 @@
             },
             methods: {
                 addItem() {
+                    if (this.itemAdd == '') {
+                        alert('Você precisa digitar algo!');
+                        return;
+                    }
                     this.lista.push({
-                       lista: this.itemAdd,
-                        clearInput: this.itemAdd = ''
-                    })
+                        lista: this.itemAdd
+                    });
+                    this.itemAdd = '';
+                },
+
+                removeItem(index) {
+                    this.lista.splice(index, 1);
                 }
             }
         })
