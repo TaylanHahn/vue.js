@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js">
+    </script>
+</head>
+<body>
+    <div id="lista">
+        <input type="text" v-model="itemAdd" v-on:change="addItem"/>
+         <button v-on:click="addItem">Add</button> <!-- Pode ser v-on:click ou @click -->
+
+        <ul>
+            <li v-for="item in lista">
+                {{ item.lista }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Vue 3
+        const app = Vue.createApp({
+            data() {
+                return {
+                    itemAdd: '',
+                    lista: []
+                }
+            },
+            methods: {
+                addItem() {
+                    this.lista.push({
+                       lista: this.itemAdd,
+                        clearInput: this.itemAdd = ''
+                    })
+                }
+            }
+        })
+        app.mount('#lista')
+    </script>
+</body>
+</html>
+
