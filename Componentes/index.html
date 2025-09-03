@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <div v-for="(image, index) in images" :key="index">
+             <my-image v-bind:src="image.src" />  <!-- o v-bind é para passar a prop src, para que o vue interpretar como uma variável e não como uma string -->
+        </div>
+
+    </div>
+
+    <script type="module">
+        import  MyImage  from './MyImage.js'; // qnd tiver mais componentes, usar {MyImage, OutroComponente...}
+        
+        let app = Vue.createApp ({
+            data(){
+                return {
+                    images: [
+                        {src: 'Grêmio.jpg', alt: 'Image 1'},
+                        {src: 'Lakers.jpg', alt: 'Image 2'},
+                        {src: 'Vikings.jpg', alt: 'Image 3'}
+                    ]
+                }
+            }
+        });
+        app.component('my-image', MyImage); // registrando o componente globalmente
+        app.mount('#app'); // montando a aplicação no elemento com id app
+    </script>
+</body>
+</html>
