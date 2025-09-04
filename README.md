@@ -37,10 +37,10 @@ Vue.js fornece um conjunto de diretivas que podem ser usadas para manipular o DO
 
 >> Neste exemplo, criamos uma instância Vue chamada app e a associamos a um elemento HTML com o ID app. O objeto data contém uma propriedade message que é exibida na página usando a sintaxe de interpolação ``.
 
-- Neste exemplo é que o Vue.js é importado diretamente do CDN do Vue.js. Isso significa que você pode começar a usar o Vue.js em um projeto sem precisar instalar nada localmente.
-- O Vue.js é uma biblioteca progressiva, o que significa que você pode adotar o Vue de forma incremental em um projeto existente, sem a necessidade de reescrever todo o código.
+- Neste exemplo é que o Vue.js é importado diretamente. Isso significa que você pode começar a usá-lo em um projeto sem precisar instalar nada localmente.
+- É uma biblioteca progressiva, o que significa que você pode adotar o Vue de forma incremental em um projeto existente, sem a necessidade de reescrever todo o código.
 - Outra característica importante é a sua ***reatividade***.
-    - Quando os dados associados a uma instância Vue são alterados, a interface do usuário é automaticamente atualizada para refletir essas alterações. Isso torna o Vue.js uma ferramenta poderosa para a criação de interfaces de usuário dinâmicas.
+    - Quando os dados associados a uma instância Vue são alterados, a interface do usuário é automaticamente atualizada para refletir essas alterações. Isso o torna uma ferramenta poderosa para a criação de interfaces de usuário dinâmicas.
 
 
 ## Módulos
@@ -52,7 +52,7 @@ export function soma(a, b) {
   return a + b;
 }
 ````
-````
+````js
 import { soma } from ‘./math.js’;
 console.log(soma(2, 3));
 ````
