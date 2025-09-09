@@ -18,10 +18,9 @@ Vue.js fornece um conjunto de diretivas que podem ser usadas para manipular o DO
 >> **Demonstrativo simples de como "inicia-se" o Vue em um HTML:**
 ````html
 <body>
-    <div id="app">
-        
-    </div>
-    <script>
+    <div id="app"></div>
+
+ <script>
         // Vue 3
         const app = Vue.createApp({
             data() {
@@ -31,7 +30,7 @@ Vue.js fornece um conjunto de diretivas que podem ser usadas para manipular o DO
             }
         })
         app.mount('#app')
-    </script>
+ </script>
 </body>
 ````
 
