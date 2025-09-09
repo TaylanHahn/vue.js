@@ -1,16 +1,10 @@
 /**
 COMPONENTEs VUE.JS
- *
- * Objetivo: Servir como documentação e guia de estudo completo sobre a estrutura
- * de um componente Vue.js (Options API). O foco está em explicar cada caso de uso
- * com exemplos práticos e comentários detalhados.
  */
 export default {
-  // --------------------------------------------------------------------------
   // 1. IDENTIFICAÇÃO E HERANÇA
   // --------------------------------------------------------------------------
-
-  /**
+  /*
    * 'name': Identificador do componente. Essencial para depuração (com Vue DevTools)
    * e para componentes recursivos (um componente que chama a si mesmo).
    * Convenções: PascalCase ou kebab-case.
