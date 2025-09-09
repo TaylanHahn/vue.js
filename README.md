@@ -348,6 +348,31 @@ Uso no HTML (pai):
 ````
 >> Nota: Use ``props`` para personalizar componentes reutilizáveis.
 
+## 6. ``watch`` → Efeitos Colaterais (Reações a Mudanças)
+👉 Pergunte-se: "Preciso executar uma ação automaticamente sempre que um dado específico (data ou prop) mudar?"
+Se SIM → watch.
+Use watch para executar código assíncrono ou custoso em resposta a mudanças de dados. Por exemplo, fazer uma chamada de API quando um ID muda.
+
+Exemplo:
+````js
+data() {
+  return {
+    termoDeBusca: '',
+    resultados: []
+  }
+},
+watch: {
+  // Sempre que `termoDeBusca` mudar...
+  termoDeBusca(novoTermo) {
+    // ...executa esta ação (efeito colateral)
+    if (novoTermo.length > 2) {
+      this.buscarResultadosNaAPI(novoTermo); 
+    }
+  }
+}
+````
+>> Nota: Use ``watch`` para executar "efeitos colaterais" reativos. É a ferramenta certa para lógica que não calcula um valor para ser exibido (isso é computed), mas que precisa agir quando um valor muda (ex: chamadas de API, salvar no localStorage).
+
 
 ## 🧭 Resumindo com uma “regra de bolso”
 - Vai mudar com interação? → ``data`` (o que muda o tempo todo)
@@ -355,6 +380,7 @@ Uso no HTML (pai):
 - É um valor derivado de outro? → ``computed`` (o que deriva do que muda)
 - É o que será exibido na tela? → ``template`` (o que aparece pro usuário)
 - Precisa vir de fora (pai → filho)? → ``props`` (o que vem de fora)
+- Precisa reagir a uma mudança específica? → ``watch`` (o que reage a uma mudança)
 
 Exemplo COMPLETO do uso em conjunto:
 ````vue
@@ -362,31 +388,55 @@ Exemplo COMPLETO do uso em conjunto:
   <div>
     <h1>{{ titulo }}</h1>
     <h2>Nome completo: {{ nomeCompleto }}</h2>
+
     <p>Contador: {{ contador }}</p>
+    <p v-if="contador > 5" class="aviso">
+      O contador já passou de 5!
+    </p>
+
     <button @click="incrementar">+1</button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["titulo"],   // dado vindo de fora (pai → filho)
+  props: ["titulo"],     // dado vindo de fora (pai → filho)
   data() {
     return {
-      nome: "Taylan",  // estado reativo
+      nome: "Taylan",    // estado reativo
       sobrenome: "Hahn",
       contador: 0
     }
   },
   computed: {
-    nomeCompleto() {   // valor derivado
+    nomeCompleto() {     // valor derivado
       return this.nome + " " + this.sobrenome
     }
   },
+  watch: {
+    // observador para a propriedade 'contador'
+    contador(novoValor, valorAntigo) {
+      console.log(`O contador mudou de ${valorAntigo} para ${novoValor}`);
+
+      // Executa uma lógica específica quando uma condição é atingida
+      if (novoValor === 10) {
+        // Isso é um "efeito colateral"
+        console.warn('🎉 O contador atingiu 10! Um marco importante!');
+      }
+    }
+  },
   methods: {
-    incrementar() {    // ação disparada por evento
-      this.contador++
+    incrementar() {      // ação disparada por evento
+      this.contador++;
     }
   }
 }
 </script>
+
+<style>
+  .aviso {
+    color: green;
+    font-weight: bold;
+  }
+</style>
 ````
