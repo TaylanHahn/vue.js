@@ -122,7 +122,7 @@ const app = Vue.createApp({
 app.mount('#app')
 </script>
 ````
->> nomeCompleto é uma propriedade computada derivada de nome e sobrenome. O Vue cacheia o valor e só recalcula quando as dependências mudam.
+>> Neste exemplo, a propriedade nomeCompleto é calculada automaticamente com base em nome e sobrenome. Sempre que um deles mudar, o valor de nomeCompleto será atualizado.
 
 ## Lifecycle Hooks ⏳
 O Vue oferece hooks de ciclo de vida, que permitem executar código em momentos específicos do ciclo de um componente.
@@ -166,6 +166,7 @@ Uso no HTML:
 ````html
 <input v-foco />
 ````
+>> Neste exemplo: registramos a diretiva personalizada v-foco e a aplicamos ao <input>. No hook mounted da diretiva, chamamos el.focus(), fazendo o campo receber foco automaticamente.
 
 ## Event Handling 🎛️
 O Vue facilita a manipulação de eventos com ``v-on`` ou ``@``.
@@ -187,6 +188,7 @@ const app = Vue.createApp({
 app.mount('#app')
 </script>
 ````
+>> Neste exemplo: ``@click`` é atalho para ``v-on:click``. O método dizerOi é resolvido em methods e executa no contexto do componente.
 
 ## Slots 🧳
 Slots permitem inserir conteúdo dinâmico dentro de componentes.
@@ -208,6 +210,7 @@ Uso:
   <p>Conteúdo flexível passado para o componente</p>
 </Card>
 ````
+>> Neste exemplo: o componente Card define um <slot>; tudo que é colocado entre <Card>...</Card> é injetado ali, permitindo inserir qualquer conteúdo dentro dele. Isso torna o componente mais flexível e reutilizável.
 
 ## Single File Components (SFC) 📂
 No desenvolvimento real com Vue (usando ferramentas como Vite ou Vue CLI), os componentes são criados em arquivos .vue, chamados Single File Components.
@@ -227,6 +230,8 @@ export default {
   }
 }
 </script>
+````
+>> Neste exemplo, criamos um Single File Component que possui três seções: template (HTML), script (lógica) e style (CSS). Isso organiza melhor o código e facilita a manutenção.
 
 <style scoped>
 h1 {
