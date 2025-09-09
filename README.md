@@ -253,8 +253,8 @@ h1 {
 
 # Mas quando usar cada coisa??? 🤔
 ### Dúvidas que podem surgir na manipulção dos componentes:
-- Quando é preciso colocar uma função dentro de um ``methods`` ou de um ``computed``?
-- Quando preciso definir o que vai do ``data()``?
+- Quando é preciso colocar um código dentro de um ``methods`` ou de um ``computed``?
+- Quando preciso definir o que vai no ``data()``?
 - Como saber qual é o trecho do codigo HTML que deve colocar em template?
 - Quais props são necessárias em cada caso?
 
