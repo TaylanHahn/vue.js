@@ -248,3 +248,145 @@ h1 {
 </style>
 ````
 >> Neste exemplo, criamos um Single File Component que possui três seções: template (HTML), script (lógica) e style (CSS). Isso organiza melhor o código e facilita a manutenção.
+
+---
+
+# Mas quando usar cada coisa??? 🤔
+### Dúvidas que podem surgir na manipulção dos componentes:
+- Quando é preciso colocar uma função dentro de um ``methods`` ou de um ``computed``?
+- Quando preciso definir o que vai do ``data()``?
+- Como saber qual é o trecho do codigo HTML que deve colocar em template?
+- Quais props são necessárias em cada caso?
+
+  Para isso, é importante entender o uso correta de cada um deles:
+
+## 1. `data()` → Estado Reativo do Componente
+👉 Pergunte-se: *“Esse valor pode mudar com o tempo e deve refletir no HTML?”*
+- Se SIM → vai em ``data()``.
+- Se NÂO (é fixo, não precisa ser reativo) → pode ser uma constante no script normal.
+
+Exemplo:
+````js
+data() {
+  return {
+    contador: 0,        // muda conforme o usuário interage
+    tema: "claro"       // pode mudar via botão de toggle
+  }
+}
+````
+>> Nota: Use ``data()`` para valores que variam durante o ciclo de vida do componente.
+
+## 2. `methods` → Ações / Funções do Usuário
+👉 Pergunte-se: *“Essa função depende de uma ação do usuário ou evento do sistema?”*
+- Se SIM → methods.
+São chamadas sempre que acionadas, não ficam armazenadas em cache.
+
+Exemplo:
+````js
+methods: {
+  incrementar() {
+    this.contador++
+  },
+  alternarTema() {
+    this.tema = this.tema === "claro" ? "escuro" : "claro"
+  }
+}
+````
+>> Nota: Use ``methods`` para funções que alteram estado ou executam lógicas sob demanda.
+
+## 3. `computed` → Valores Derivados (Cacheados)
+👉 Pergunte-se: *“Esse valor é calculado a partir de outros dados e eu quero que ele seja recalculado só quando necessário?”*
+- Se SIM → computed.
+Diferente de methods, computed guarda em cache até que suas dependências mudem.
+
+Exemplo:
+````js
+data() {
+  return {
+    nome: "Taylan",
+    sobrenome: "Hahn"
+  }
+},
+computed: {
+  nomeCompleto() {
+    return this.nome + " " + this.sobrenome
+  }
+}
+````
+>> Nota: Use computed quando precisar de valores derivados que dependem do estado reativo.
+
+## 4. `template` → Estrutura Visual
+👉 Pergunte-se: *“Isso é o que aparece no HTML?”*
+- Se SIM → vai no template.
+Só podem ser expressões simples ``({{ }})``, sem *lógica complexa* (essa lógica deve estar em computed ou methods).
+
+Exemplo:
+````js
+<template>
+  <div>
+    <h1>{{ nomeCompleto }}</h1>
+    <button @click="incrementar">Contador: {{ contador }}</button>
+  </div>
+</template>
+````
+>> Nota: O ``template`` é só a parte declarativa. A lógica fica no **script**.
+
+## 5. `props` → Comunicação Pai → Filho
+👉 Pergunte-se: “Esse dado pertence ao componente pai, mas o filho precisa saber dele?”
+- Se SIM → use props.
+Props são imutáveis dentro do filho — se precisar mudar, emita um evento para o pai.
+
+Exemplo (filho):
+````js
+export default {
+  props: ["titulo"]
+}
+````
+Uso no HTML (pai):
+````html
+<MeuComponente titulo="Bem-vindo!" />
+````
+>> Nota: Use ``props`` para personalizar componentes reutilizáveis.
+
+
+## 🧭 Resumindo com uma “regra de bolso”
+- Vai mudar com interação? → ``data`` (o que muda o tempo todo)
+- Precisa executar ação? → ``methods`` (o que faz acontecer)
+- É um valor derivado de outro? → ``computed`` (o que deriva do que muda)
+- É o que será exibido na tela? → ``template`` (o que aparece pro usuário)
+- Precisa vir de fora (pai → filho)? → ``props`` (o que vem de fora)
+
+Exemplo COMPLETO do uso em conjunto:
+````vue
+<template>
+  <div>
+    <h1>{{ titulo }}</h1>
+    <h2>Nome completo: {{ nomeCompleto }}</h2>
+    <p>Contador: {{ contador }}</p>
+    <button @click="incrementar">+1</button>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ["titulo"],   // dado vindo de fora (pai → filho)
+  data() {
+    return {
+      nome: "Taylan",  // estado reativo
+      sobrenome: "Hahn",
+      contador: 0
+    }
+  },
+  computed: {
+    nomeCompleto() {   // valor derivado
+      return this.nome + " " + this.sobrenome
+    }
+  },
+  methods: {
+    incrementar() {    // ação disparada por evento
+      this.contador++
+    }
+  }
+}
+</script>
+````
