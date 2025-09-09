@@ -230,8 +230,6 @@ export default {
   }
 }
 </script>
-````
->> Neste exemplo, criamos um Single File Component que possui três seções: template (HTML), script (lógica) e style (CSS). Isso organiza melhor o código e facilita a manutenção.
 
 <style scoped>
 h1 {
@@ -239,3 +237,4 @@ h1 {
 }
 </style>
 ````
+>> >> Neste exemplo, criamos um Single File Component que possui três seções: template (HTML), script (lógica) e style (CSS). Isso organiza melhor o código e facilita a manutenção.
