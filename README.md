@@ -258,12 +258,12 @@ h1 {
 - Como saber qual é o trecho do codigo HTML que deve colocar em template?
 - Quais props são necessárias em cada caso?
 
-  Para isso, é importante entender o uso correta de cada um deles:
+  Para isso, é importante entender o uso CORRETO de cada um deles:
 
 ## 1. `data()` → Estado Reativo do Componente
 👉 Pergunte-se: *“Esse valor pode mudar com o tempo e deve refletir no HTML?”*
 - Se SIM → vai em ``data()``.
-- Se NÂO (é fixo, não precisa ser reativo) → pode ser uma constante no script normal.
+- Se NÃO (é fixo, não precisa ser reativo) → pode ser uma constante no script normal.
 
 Exemplo:
 ````js
