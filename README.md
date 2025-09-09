@@ -152,15 +152,7 @@ app.mount('#app')
 Além das diretivas nativas (``v-if``, ``v-for``, etc.), é possível criar diretivas personalizadas no Vue.
 
 Exemplo:
-````html
-<body>
-    <div id="app">
-        <p>O campo de input abaixo receberá o foco automaticamente ao carregar a página.</p>
-        
-        <input v-foco type="text" placeholder="Eu estou com o foco!">
-    </div>
-
-    <script>
+````js
         const app = Vue.createApp({
             // O objeto de opções do app pode ficar vazio
         });
@@ -173,12 +165,16 @@ Exemplo:
             }
         });
         app.mount('#app');
-    </script>
-</body>
 ````
 Uso no HTML:
 ````html
-<input v-foco />
+<body>
+    <div id="app">
+        <p>O campo de input abaixo receberá o foco automaticamente ao carregar a página.</p>
+        
+        <input v-foco type="text" placeholder="Eu estou com o foco!">
+    </div>
+</body>
 ````
 >> Neste exemplo: registramos a diretiva personalizada v-foco e a aplicamos ao <input>. No hook mounted da diretiva, chamamos el.focus(), fazendo o campo receber foco automaticamente.
 
