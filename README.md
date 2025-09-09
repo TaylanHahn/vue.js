@@ -176,7 +176,7 @@ Uso no HTML:
     </div>
 </body>
 ````
->> Neste exemplo: registramos a diretiva personalizada v-foco e a aplicamos ao <input>. No hook mounted da diretiva, chamamos el.focus(), fazendo o campo receber foco automaticamente.
+>> Neste exemplo: registramos a diretiva personalizada v-foco e a aplicamos ao ``<input>``. No hook mounted da diretiva, chamamos ``el.focus()``, fazendo o campo receber foco automaticamente.
 
 ## Event Handling 🎛️
 O Vue facilita a manipulação de eventos com ``v-on`` ou ``@``.
