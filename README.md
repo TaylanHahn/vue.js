@@ -71,10 +71,10 @@ export default {
   template: `<img :src="src" :alt="alt" />`
 };
 ````
->> Neste exemplo, criamos um componente chamado MyImage que recebe duas propriedades (src e alt) e renderiza uma tag <img>. Assim, podemos reutilizar este componente em vários pontos da aplicação.
+>> Neste exemplo, criamos um componente chamado ``MyImage`` que recebe duas propriedades (src e alt) e renderiza uma tag <img>. Assim, podemos reutilizar este componente em vários pontos da aplicação.
 
 ## Propriedades Reativas ⚡
-No Vue.js, as propriedades reativas são variáveis declaradas dentro de data() que, quando alteradas, atualizam automaticamente a interface.
+No Vue.js, as propriedades reativas são variáveis declaradas dentro de ``data()`` que, quando alteradas, atualizam automaticamente a interface.
 
 Exemplo:
 ````html
@@ -210,7 +210,7 @@ Uso:
   <p>Conteúdo flexível passado para o componente</p>
 </Card>
 ````
->> Neste exemplo: o componente Card define um <slot>; tudo que é colocado entre <Card>...</Card> é injetado ali, permitindo inserir qualquer conteúdo dentro dele. Isso torna o componente mais flexível e reutilizável.
+>> Neste exemplo: o componente Card define um ``<slot>``; tudo que é colocado entre ``<Card>...</Card>`` é injetado ali, permitindo inserir qualquer conteúdo dentro dele. Isso torna o componente mais flexível e reutilizável.
 
 ## Single File Components (SFC) 📂
 No desenvolvimento real com Vue (usando ferramentas como Vite ou Vue CLI), os componentes são criados em arquivos .vue, chamados Single File Components.
@@ -237,4 +237,4 @@ h1 {
 }
 </style>
 ````
->> >> Neste exemplo, criamos um Single File Component que possui três seções: template (HTML), script (lógica) e style (CSS). Isso organiza melhor o código e facilita a manutenção.
+>> Neste exemplo, criamos um Single File Component que possui três seções: template (HTML), script (lógica) e style (CSS). Isso organiza melhor o código e facilita a manutenção.
