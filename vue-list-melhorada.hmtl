@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas Funcional</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js"></script>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        #app { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 450px; }
+        h1 { text-align: center; color: #333; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; border: none; border-radius: 4px; color: white; cursor: pointer; }
+        .btn-add { background-color: #28a745; }
+        .btn-remove { background-color: #dc3545; font-size: 12px; }
+        ul { list-style-type: none; padding: 0; }
+        li { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f9f9f9; border-left: 4px solid #007bff; margin-bottom: 8px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <h1>Minha Lista de Tarefas</h1>
+
+        <form class="input-group" @submit.prevent="addItem">
+            <input type="text" v-model="itemAdd" placeholder="Digite uma nova tarefa"/>
+            <button class="btn-add">Adicionar</button>
+        </form>
+
+        <ul>
+            <li v-for="(item, index) in lista" :key="index">
+                <span>{{ item.texto }}</span>
+                <button class="btn-remove" @click="removeItem(index)">Apagar</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    itemAdd: '',
+                    // 5. Mudei o nome da propriedade para 'texto' para ficar mais claro
+                    lista: [
+                        { texto: 'Estudar Vue.js' },
+                        { texto: 'Fazer o exercício' }
+                    ]
+                }
+            },
+            methods: {
+                addItem() {
+                    if (this.itemAdd.trim() === '') {
+                        alert('Você precisa digitar algo!');
+                        return;
+                    }
+                    // Adicionando um objeto com a propriedade 'texto'
+                    this.lista.push({
+                        texto: this.itemAdd
+                    });
+                    this.itemAdd = ''; // Limpa o campo após adicionar
+                },
+                // O método removeItem já estava correto, recebendo o index
+                removeItem(index) {
+                    // splice remove o item da lista na posição (index) especificada
+                    this.lista.splice(index, 1);
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
