@@ -38,7 +38,7 @@ Vue.js fornece um conjunto de diretivas que podem ser usadas para manipular o DO
 
 >> Neste exemplo, criamos uma instância Vue chamada app e a associamos a um elemento HTML com o ID app. O objeto data contém uma propriedade ``message`` que é exibida na página usando a sintaxe de interpolação ``{{ }}``.
 
-- Neste exemplo é que o Vue.js é importado diretamente. Isso significa que você pode começar a usá-lo em um projeto sem precisar instalar nada localmente.
+- Neste exemplo o Vue é importado diretamente. Isso significa que você pode começar a usá-lo em um projeto sem precisar instalar nada localmente.
 - É uma biblioteca progressiva, o que significa que você pode adotar o Vue de forma incremental em um projeto existente, sem a necessidade de reescrever todo o código.
 - Outra característica importante é a sua ***reatividade***.
     - Quando os dados associados a uma instância Vue são alterados, a interface do usuário é automaticamente atualizada para refletir essas alterações. Isso o torna uma ferramenta poderosa para a criação de interfaces de usuário dinâmicas.
@@ -297,7 +297,7 @@ methods: {
 ## 3. `computed` → Valores Derivados (Cacheados)
 👉 Pergunte-se: *“Esse valor é calculado a partir de outros dados e eu quero que ele seja recalculado só quando necessário?”*
 - Se SIM → computed.
-Diferente de methods, computed guarda em cache até que suas dependências mudem.
+-  Diferente de methods, computed guarda em cache até que suas dependências mudem.
 
 Exemplo:
 ````js
