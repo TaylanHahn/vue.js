@@ -297,7 +297,7 @@ methods: {
 ## 3. `computed` → Valores Derivados (Cacheados)
 👉 Pergunte-se: *“Esse valor é calculado a partir de outros dados e eu quero que ele seja recalculado só quando necessário?”*
 - Se SIM → computed.
--  Diferente de methods, computed guarda em cache até que suas dependências mudem.
+Diferente de methods, computed guarda em cache até que suas dependências mudem.
 
 Exemplo:
 ````js
