@@ -1,0 +1,38 @@
+<!--
+Exercício 2
+Utilizando a ideia de componentes, crie um componente de item de
+tarefa que receba as propriedades necessárias e seja que reutilizável.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Lista2.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js"></script>
+    <title>Ex 2 - Lista de Tarefas com Componentes</title>
+</head>
+
+<body>
+    <h1>Lista de Tarefas</h1>
+    <div id="lista">
+        <input type="text" v-model="novoItem" @keyup.enter="adicionar" placeholder="Digite uma tarefa">
+        <button @click="adicionar"> Adicionar </button>
+
+        <ul>
+            <tarefa-item v-for="(item, index) in lista"
+            :key="index"
+            :item="item"
+            :index="index"
+            @deletar="deletar"
+            ></tarefa-item>
+        </ul>
+    </div>
+
+    <script type="module" src="main.js"></script>
+
+</body>
+
+</html>

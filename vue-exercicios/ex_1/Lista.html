@@ -1,0 +1,115 @@
+<!--
+Exercício 1
+Crie uma lista de tarefas simples em Vue onde:
+- Renderize uma lista a partir de um array.
+- Mostre cada item dinamicamente com v-for.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        #lista {
+            max-width: 400px;
+            margin: auto;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li button {
+            background-color: #dc3545;
+        }
+        li button:hover {
+            background-color: #c82333;
+        }
+    </style>
+
+    <title>Ex 1 - Lista de Tarefas</title>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <div id="lista">
+        <input type="text" v-model="novoItem" @keyup.enter="adicionar" placeholder="Digite uma tarefa">
+        <button @click="adicionar"> Adicionar </button>
+        
+
+        <ul>
+            <li v-for="(item, index) in lista" :key="index">
+                {{ item.lista }}
+                <button @click="deletar(index)"> Deletar </button>
+            </li>
+            
+        </ul>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    novoItem: '',
+                    lista: []
+                }
+            },
+            methods: {
+                adicionar(){
+                    if(this.novoItem.trim() == ''){
+                        alert("Digite algo para adicionar!");
+                        return;
+                    }
+
+                    this.lista.push({
+                        lista: this.novoItem
+                    });
+
+                    this.novoItem = '';
+                },
+                deletar(index){
+                    this.lista.splice(index, 1);
+                }
+            }
+        }) 
+        app.mount('#lista');
+    </script>
+    
+</body>
+</html>
