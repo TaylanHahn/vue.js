@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+
+      <div id="app">
+        <crud-tasks></crud-tasks> <!-- Usa o componente CRUD -->
+      </div>
+      
+    <script type="module">
+      import Crud from "./components/Crud.js"; // Importa o componente CRUD
+
+      const app = Vue.createApp({}); // Cria a aplicação Vue
+      app.component("crud-tasks", Crud); // Registra o componente CRUD
+      app.mount("#app"); // Monta a aplicação no elemento com id "app"
+    </script>
+  </body>
+</html>
+
+
