@@ -222,7 +222,7 @@ Uso:
 ````
 >> Neste exemplo: o componente Card define um ``<slot>``; tudo que é colocado entre ``<Card>...</Card>`` é injetado ali, permitindo inserir qualquer conteúdo dentro dele. Isso torna o componente mais flexível e reutilizável.
 
-## Tipos de Slots 
+### Tipos de Slots 
 Existem três tipos principais de slots no Vue.js:
 
 - **Slot Padrão**: O slot padrão é o mais simples e permite que você insira conteúdo em um componente.
