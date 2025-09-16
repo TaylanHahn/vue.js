@@ -222,6 +222,14 @@ Uso:
 ````
 >> Neste exemplo: o componente Card define um ``<slot>``; tudo que é colocado entre ``<Card>...</Card>`` é injetado ali, permitindo inserir qualquer conteúdo dentro dele. Isso torna o componente mais flexível e reutilizável.
 
+## Tipos de Slots 
+Existem três tipos principais de slots no Vue.js:
+
+- **Slot Padrão**: O slot padrão é o mais simples e permite que você insira conteúdo em um componente.
+      - Só pode haver um único ``<slot></slot>`` no template. Se precisar de mais, será necessário nomeá-los.
+- **Slots Nomeados**: Permitem que você defina múltiplos slots em um componente, cada um com um nome específico.
+- **Slots com Escopo**: Permitem que um componente filho passe dados para o componente pai através do slot.
+
 ## Single File Components (SFC) 📂
 No desenvolvimento real com Vue (usando ferramentas como Vite ou Vue CLI), os componentes são criados em arquivos .vue, chamados Single File Components.
 
