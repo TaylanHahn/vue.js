@@ -230,6 +230,12 @@ Existem três tipos principais de slots no Vue.js:
 - **Slots Nomeados**: Permitem que você defina múltiplos slots em um componente, cada um com um nome específico.
 - **Slots com Escopo**: Permitem que um componente filho passe dados para o componente pai através do slot.
 
+### Vantagens dos Slots
+- **Flexibilidade**: Permite personalizar componentes sem modificar sua estrutura
+- **Reutilização**: Um componente pode ser usado em diferentes contextos
+- **Separação de Responsabilidades**: O componente cuida da estrutura, o pai do conteúdo
+- **Composição**: Facilita a criação de layouts complexos
+
 ## Single File Components (SFC) 📂
 No desenvolvimento real com Vue (usando ferramentas como Vite ou Vue CLI), os componentes são criados em arquivos .vue, chamados Single File Components.
 
