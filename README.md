@@ -201,7 +201,7 @@ app.mount('#app')
 >> Neste exemplo: ``@click`` é atalho para ``v-on:click``. O método dizerOi é resolvido em methods e executa no contexto do componente.
 
 ## Slots 🧳
-Slots permitem inserir conteúdo dinâmico dentro de componentes.
+Slots permitem inserir conteúdo dinâmico dentro de componentes. Eles funcionam como *“espaços reservados”* nos componentes onde você pode inserir conteúdo dinâmico.
 
 Exemplo de componente com slot:
 ````js
