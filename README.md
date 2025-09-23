@@ -454,3 +454,13 @@ export default {
   }
 </style>
 ````
+## Por onde iniciar um exercício de VUE ???
+*Tente seguir o seguinte fluxo linear para a resolução:*
+
+- **Rascunhe no Papel**: Desenhe, identifique componentes e dados.
+- **Crie o menor componente**: Apenas para exibir dados (via props).
+- **Crie o componente que lista o menor**: Usa `v-for` e passa as props.
+- **Adicione a interatividade**: Use `$emit` no filho e @evento no pai para conectar as ações.
+- **Monte a página final**: Crie o `App.js` que segura os dados principais e renderiza o componente de lista.
+
+Seguir essa ordem De Baixo para Cima (Bottom-Up) transforma um problema grande e abstrato em uma série de pequenos passos lógicos e gerenciáveis.
