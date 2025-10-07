@@ -104,41 +104,123 @@ const RegistrarTransacao = {
 
 // Componente: Calculadora
 // Uma calculadora simples, como no seu app em C.
+
+// js/main.js
+
+// ... (O resto do seu código: createApp, VisaoGeral, RegistrarTransacao, etc.)
+
+// Componente: Calculadora (VERSÃO DINÂMICA)
+// Uma calculadora interativa com botões.
 const Calculadora = {
     setup() {
-        const num1 = ref(0);
-        const num2 = ref(0);
-        const operador = ref('+');
-        const resultado = computed(() => {
-            switch (operador.value) {
-                case '+': return num1.value + num2.value;
-                case '-': return num1.value - num2.value;
-                case '*': return num1.value * num2.value;
-                case '/': return num2.value !== 0 ? num1.value / num2.value : 'Divisão por zero';
-                default: return 0;
+        // --- Estado da Calculadora ---
+        // ref() cria variáveis reativas que atualizam a tela quando seus valores mudam.
+        const currentInput = ref('0'); // O valor exibido na tela da calculadora
+        const previousValue = ref(null); // Armazena o primeiro número de uma operação
+        const operator = ref(null); // Armazena o operador (+, -, *, /)
+        const operatorClicked = ref(false); // Flag para saber se um operador foi a última tecla pressionada
+
+        // --- Métodos da Calculadora ---
+
+        // Limpa tudo e reseta para o estado inicial
+        const clear = () => {
+            currentInput.value = '0';
+            previousValue.value = null;
+            operator.value = null;
+            operatorClicked.value = false;
+        };
+
+        // Adiciona um número ao visor
+        const appendNumber = (number) => {
+            // Se um operador foi clicado, limpa o visor para o próximo número
+            if (operatorClicked.value) {
+                currentInput.value = '';
+                operatorClicked.value = false;
             }
-        });
-        
-        return { num1, num2, operador, resultado };
+            // Se o visor for '0', substitui pelo número, senão, concatena
+            if (currentInput.value === '0') {
+                currentInput.value = number;
+            } else {
+                currentInput.value += number;
+            }
+        };
+
+        // Adiciona o ponto decimal, se ainda não existir
+        const appendDecimal = () => {
+            if (!currentInput.value.includes('.')) {
+                currentInput.value += '.';
+            }
+        };
+
+        // Define o operador da conta
+        const setOperator = (op) => {
+            // Se já houver uma operação anterior, calcula antes de prosseguir
+            if (previousValue.value !== null) {
+                calculate();
+            }
+            previousValue.value = parseFloat(currentInput.value);
+            operator.value = op;
+            operatorClicked.value = true;
+        };
+
+        // Realiza o cálculo final
+        const calculate = () => {
+            if (operator.value === null || previousValue.value === null) return;
+            
+            const currentValueFloat = parseFloat(currentInput.value);
+            let result;
+
+            switch (operator.value) {
+                case '+': result = previousValue.value + currentValueFloat; break;
+                case '-': result = previousValue.value - currentValueFloat; break;
+                case '*': result = previousValue.value * currentValueFloat; break;
+                case '/': result = previousValue.value / currentValueFloat; break;
+            }
+
+            currentInput.value = String(result);
+            previousValue.value = null;
+            operator.value = null;
+        };
+
+        // Retorna as variáveis e métodos para serem usados no template
+        return { 
+            currentInput, 
+            clear, 
+            appendNumber, 
+            appendDecimal, 
+            setOperator, 
+            calculate 
+        };
     },
     template: `
         <div class="card">
-            <h2>Calculadora Simples</h2>
-            <div class="form-group">
-                <input type="number" v-model.number="num1">
+            <h2>Calculadora Dinâmica</h2>
+            <div class="calculator">
+                <div class="display">{{ currentInput }}</div>
+                <div class="buttons">
+                    <button @click="clear" class="btn operator">C</button>
+                    <button @click="setOperator('/')" class="btn operator">÷</button>
+                    <button @click="setOperator('*')" class="btn operator">×</button>
+                    <button @click="setOperator('-')" class="btn operator">−</button>
+                    
+                    <button @click="appendNumber('7')" class="btn">7</button>
+                    <button @click="appendNumber('8')" class="btn">8</button>
+                    <button @click="appendNumber('9')" class="btn">9</button>
+                    <button @click="setOperator('+')" class="btn operator" style="grid-row: span 2;">+</button>
+
+                    <button @click="appendNumber('4')" class="btn">4</button>
+                    <button @click="appendNumber('5')" class="btn">5</button>
+                    <button @click="appendNumber('6')" class="btn">6</button>
+
+                    <button @click="appendNumber('1')" class="btn">1</button>
+                    <button @click="appendNumber('2')" class="btn">2</button>
+                    <button @click="appendNumber('3')" class="btn">3</button>
+                    <button @click="calculate" class="btn equals" style="grid-row: span 2;">=</button>
+                    
+                    <button @click="appendNumber('0')" class="btn" style="grid-column: span 2;">0</button>
+                    <button @click="appendDecimal" class="btn">.</button>
+                </div>
             </div>
-            <div class="form-group">
-                <select v-model="operador">
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                    <option value="*">*</option>
-                    <option value="/">/</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="number" v-model.number="num2">
-            </div>
-            <h3>Resultado: {{ resultado }}</h3>
         </div>
     `
 };
