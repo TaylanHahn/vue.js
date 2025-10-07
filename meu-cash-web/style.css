@@ -140,6 +140,63 @@ main {
     font-weight: bold;
 }
 
+/* Estilos da Calculadora */
+.calculator {
+    width: 100%;
+    max-width: 320px; /* Largura máxima da calculadora */
+    margin: auto; /* Centraliza a calculadora dentro do card */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.display {
+    background-color: #2c3e50;
+    color: white;
+    font-size: 2.5em;
+    padding: 20px;
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.buttons {
+    display: grid;
+    /* Cria um grid de 4 colunas de tamanho igual */
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.btn {
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #f0f0f0;
+}
+
+.btn.operator {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn.operator:hover {
+    background-color: #2980b9;
+}
+
+.btn.equals {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn.equals:hover {
+    background-color: #219150;
+}
+
 
 /* Animação */
 @keyframes fadeIn {
