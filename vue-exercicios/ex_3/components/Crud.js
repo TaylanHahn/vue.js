@@ -2,7 +2,7 @@ import Task from "./Task.js";
 
 export default {
     name: 'crud',
-    componnets: {"cpw2-task": Task}, //importa a tag que será usada no template
+    components: {"cpw2-task": Task}, //importa a tag que será usada no template
 
     data(){
         return{
@@ -119,3 +119,4 @@ export default {
         </div>
     `
 } 
+
